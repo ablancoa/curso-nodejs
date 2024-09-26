@@ -1,11 +1,37 @@
-const store = require('../../../store/dummy')
-
+const { nanoid } = require('nanoid')
 const TABLA = 'user'
 
-function list() {
-  return store.list(TABLA)
-}
+module.exports = function (injectedStore) {
+  let store = injectedStore
+  if (!store) {
+    store = require('../../../store/dummy')
+  }
 
-module.exports = {
-  list
+  function list() {
+    return store.list(TABLA)
+  }
+
+  function get(id) {
+    return store.get(TABLA, id)
+  }
+
+  function upsert(body, id) {
+    const user = {
+      name: body.name
+    }
+
+    if (body.id) {
+      user.id = id
+    } else {
+      user.id = nanoid()
+    }
+
+    return store.upsert(TABLA, user)
+  }
+
+  return {
+    list,
+    get,
+    upsert
+  }
 }
