@@ -4,6 +4,7 @@
   "description": "practica de microservicios y redis",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander Blanco",
@@ -11,7 +12,9 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
     "nanoid": "^3.3.7",
+    "nodemon": "^3.1.7",
     "swagger-ui-express": "^5.0.1"
   }
 }

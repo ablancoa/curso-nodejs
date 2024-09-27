@@ -125,6 +125,10 @@
             "type": "string",
             "example": "1jdfg5-788weqrt8q34-t38q"
           },
+          "name": {
+            "type": "string",
+            "example": "Andres"
+          },
           "username": {
             "type": "string",
             "example": "theUser"
