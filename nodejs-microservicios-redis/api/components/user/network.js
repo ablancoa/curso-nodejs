@@ -1,12 +1,13 @@
 const express = require('express')
+const secure = require('./secure')
 const Controller = require('./index')
 const response = require('../../../network/response')
 const router = express.Router()
 
-router.get('/', list)
-router.get('/:id', get)
+router.get('/', secure('update'), list)
+router.get('/:id', secure('update'), get)
 router.post('/', upsert)
-router.put('/', upsert)
+router.put('/', secure('update'), upsert)
 
 function list(req, res) {
   Controller.list()

@@ -9,7 +9,8 @@ function sign(data) {
 const check = {
   own: function (req, owner) {
     const decoded = decodeHeader(req)
-    console.log(decoded)
+    console.log('DECODED: ', decoded)
+    console.log('OWNER: ', owner)
 
     // Comprobar si es o no propio
     if (decoded.id !== owner) {
@@ -45,5 +46,6 @@ function decodeHeader(req) {
   return decoded
 }
 module.exports = {
-  sign
+  sign,
+  check
 }

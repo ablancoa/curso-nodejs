@@ -1,7 +1,19 @@
 const db = {
   user: [
     { id: '1', name: 'Carlos', username: 'calrlitos' },
-    { id: '2', name: 'Juan', username: 'juanito' }
+    { id: '2', name: 'Juan', username: 'juanito' },
+    {
+      name: 'Alexander',
+      username: 'ablanco',
+      id: 'EWr8X4I03OSYc_e47pAp0'
+    }
+  ],
+  auth: [
+    {
+      id: 'EWr8X4I03OSYc_e47pAp0',
+      username: 'ablanco',
+      password: '$2b$05$b4uZ/xGZA5/KpToHEJw9R.KG1MqLNtB5Y3YXTV8LpCwKprQWp.edK'
+    }
   ]
 }
 
@@ -19,7 +31,6 @@ async function upsert(tabla, data) {
     db[tabla] = []
   }
   db[tabla].push(data)
-  console.log(db)
   return await list(tabla)
 }
 
