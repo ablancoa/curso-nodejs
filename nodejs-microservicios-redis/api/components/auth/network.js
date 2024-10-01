@@ -5,14 +5,12 @@ const response = require('../../../network/response')
 
 router.post('/', login)
 
-function login(req, res) {
+function login(req, res, next) {
   Controller.login(req.body.username, req.body.password)
     .then((token) => {
       response.success(req, res, token, 200)
     })
-    .catch((e) => {
-      response.error(req, res, 'Información inválida', 400)
-    })
+    .catch(next)
 }
 
 module.exports = router

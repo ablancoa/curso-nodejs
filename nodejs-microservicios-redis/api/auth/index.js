@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const config = require('../../config')
 const secret = config.jwt.secret
+const error = require('../../utils/error')
 
 function sign(data) {
   return jwt.sign(data, secret)
@@ -9,12 +10,10 @@ function sign(data) {
 const check = {
   own: function (req, owner) {
     const decoded = decodeHeader(req)
-    console.log('DECODED: ', decoded)
-    console.log('OWNER: ', owner)
 
     // Comprobar si es o no propio
     if (decoded.id !== owner) {
-      throw new Error('No puedes hacer esto')
+      throw error('No puedes hacer esto', 401)
     }
   }
 }
